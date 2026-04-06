@@ -4,6 +4,21 @@ A terminal-based fretboard note quiz for guitarists. The app presents a highligh
 
 Note that this was written entirely using Claude Code.
 
+## How to learn the fretboard progressively
+
+The most effective way to memorise every note on the neck is to work in small, manageable chunks, and only expand the scope once the current chunk feels easy using the following progression; 
+
+1. Low E string, inlay frets only (start here)
+2. Low E string, all frets
+    * Optional: Learn non-accidental (natural note) frets
+3. Then move to the A string and do the same as above until you know all notes
+4. Test yourself for the Low E and A string
+5. Progressively do the above to add progressively higher strings (D, G, B and high E) until you are testing the whole fretboard
+
+If you are beginner guitarist, it can be useful to do this only until the 4th fret, as beginners will usually only play notes and scales within this range.
+
+Finally, make sure to test yourself across multiple days, as sleep helps the brain to learn. 
+
 ## Setup
 
 Requires [conda](https://docs.conda.io/) (or mamba).
