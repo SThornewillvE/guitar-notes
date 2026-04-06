@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import sys
-from .settings import Settings, ALL_STRINGS
+from .settings import Settings, ALL_STRINGS, MAX_FRET
 from .quiz import run_quiz
 
 
@@ -38,7 +38,14 @@ def parse_args(argv: list[str] | None = None) -> Settings:
         "--open-strings",
         action="store_true",
         default=False,
-        help="Test open strings only (fret 0). Cannot be combined with --frets or --notes.",
+        help="Test open strings only (fret 0). Cannot be combined with --frets, --notes, or --max-fret.",
+    )
+    parser.add_argument(
+        "--max-fret",
+        type=int,
+        default=MAX_FRET,
+        metavar="N",
+        help=f"Maximum fret to include (0–{MAX_FRET}, inclusive). Default: {MAX_FRET}.",
     )
 
     args = parser.parse_args(argv)
@@ -48,12 +55,21 @@ def parse_args(argv: list[str] | None = None) -> Settings:
             parser.error("--open-strings cannot be combined with --frets (open strings are always fret 0).")
         if args.notes != "all":
             parser.error("--open-strings cannot be combined with --notes (open strings are always natural notes).")
+        if args.max_fret != MAX_FRET:
+            parser.error("--open-strings cannot be combined with --max-fret (open strings are always fret 0).")
+
+    if not (0 <= args.max_fret <= MAX_FRET):
+        parser.error(f"--max-fret must be between 0 and {MAX_FRET} (got {args.max_fret}).")
+
+    if args.max_fret == 0 and args.frets != "all":
+        parser.error("--max-fret 0 includes only the open string; --frets cannot further restrict this.")
 
     return Settings(
         active_strings=args.strings,
         fret_filter=args.frets,
         note_set=args.notes,
         open_strings=args.open_strings,
+        max_fret=args.max_fret,
     )
 
 
