@@ -31,6 +31,7 @@ Type the note name when prompted (e.g. `A`, `C#`, `Bb`). Flat equivalents are ac
 | `--strings` | `1`–`6` (space-separated) | all | Strings to include. 1 = high-e, 6 = low-E. |
 | `--frets` | `all`, `inlay`, `non_inlay` | `all` | Restrict to inlay frets (1,5,7,9,12,15,17), non-inlay, or all. |
 | `--notes` | `all`, `naturals_only` | `all` | Restrict to natural notes only (no sharps/flats). |
+| `--open-strings` | flag | off | Test open strings only (fret 0). Cannot be combined with `--frets` or `--notes`. |
 
 #### Examples
 
@@ -43,6 +44,12 @@ python -m guitar_notes --strings 5 6 --frets inlay
 
 # Natural notes only, all strings
 python -m guitar_notes --notes naturals_only
+
+# Open strings only (great for beginners)
+python -m guitar_notes --open-strings
+
+# Open strings on the bottom two strings only
+python -m guitar_notes --open-strings --strings 5 6
 ```
 
 ## Fretboard display

@@ -20,8 +20,11 @@ class Settings:
     active_strings: list[int] = field(default_factory=lambda: list(ALL_STRINGS))
     fret_filter: FretFilter = "all"
     note_set: NoteSet = "all"
+    open_strings: bool = False
 
     def active_frets(self) -> list[int]:
+        if self.open_strings:
+            return [0]
         if self.fret_filter == "inlay":
             return INLAY_FRETS
         elif self.fret_filter == "non_inlay":
