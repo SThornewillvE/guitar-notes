@@ -79,13 +79,13 @@ python -m guitar_notes --frets inlay --max-fret 7
 The quiz renders an ASCII fretboard for each question. The highlighted position shows the fret number; the string label on the left identifies which string is being played. Open strings are shown with `0`.
 
 ```
-e|-------------------|
-B|-------------------|
-G|-------------------|
-D|-------------------|
-A|----5--------------|
-E|-------------------|
- |  . . . .  :  .  . |
+e|- - - - - - - - - - - - - - - - - - - |
+B|- - - - - - - - - - - - - - - - - - - |
+G|- - - - - - - - - - - - - - - - - - - |
+D|- - - - - - - - - - - - - - - - - - - |
+A|- - - - 5 - - - - - - - - - - - - - - |
+E|- - - - - - - - - - - - - - - - - - - |
+ |    .   .   .   .     :     .     .   |
 ```
 
 The dots below the low-E row are fretboard inlays (at frets 1, 5, 7, 9, 15, 17) and the double-dot (`:`) marks fret 12.
