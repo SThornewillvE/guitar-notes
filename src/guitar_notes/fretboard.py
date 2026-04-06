@@ -30,8 +30,8 @@ STRING_LABELS: dict[int, str] = {
 # Frets 1–17 are displayed. Fret 0 = open string (no fret marker).
 DISPLAY_FRETS = list(range(1, 18))  # 17 fret positions
 
-# Each fret cell is CELL chars wide. 2 chars fits single- and double-digit fret numbers.
-CELL = 3
+# Each fret cell is CELL chars wide: hyphen + space, giving visual separation between frets.
+CELL = 2
 INLAY_POSITIONS = {1, 5, 7, 9, 12, 15, 17}
 MIN_TERMINAL_WIDTH = 30
 
@@ -60,10 +60,9 @@ def is_correct(answer: str, string: int, fret: int) -> bool:
 def _fret_cell(fret: int, highlighted: bool) -> str:
     """Return a CELL-wide string for one fret position."""
     if highlighted:
-        # center() puts single-digit at position 1; for double-digit "15" → "15-",
-        # keeping the units digit at position 1, aligned with the inlay marker.
-        return str(fret).center(CELL, "-")
-    return "-" * CELL
+        # Left-justify: "5 " for single digits, "15" for double digits.
+        return str(fret).ljust(CELL, " ")
+    return "- "
 
 
 def _inlay_cell(fret: int) -> str:
@@ -71,8 +70,8 @@ def _inlay_cell(fret: int) -> str:
     if fret not in INLAY_POSITIONS:
         return " " * CELL
     marker = ":" if fret == 12 else "."
-    # Marker at position 1 to align with centered fret numbers
-    return " " + marker + " " * (CELL - 2)
+    # Marker at position 0, aligned with the hyphen in each fret cell.
+    return marker + " " * (CELL - 1)
 
 
 def render_fretboard(highlight_string: int, highlight_fret: int) -> str:
