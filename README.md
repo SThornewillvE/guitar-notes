@@ -48,6 +48,7 @@ Type the note name when prompted (e.g. `A`, `C#`, `Bb`). Flat equivalents are ac
 | `--notes` | `all`, `naturals_only` | `all` | Restrict to natural notes only (no sharps/flats). |
 | `--open-strings` | flag | off | Test open strings only (fret 0). Cannot be combined with `--frets`, `--notes`, or `--max-fret`. |
 | `--max-fret` | `0`–`17` | `17` | Highest fret to include (inclusive). Useful for beginners drilling the first few frets. Cannot be combined with `--open-strings`. |
+| `--show-labels` | flag | off | Show string names (e, B, G, D, A, E) to the left of the nut. Hidden by default so you can't use them as a reference. |
 
 #### Examples
 
@@ -76,19 +77,19 @@ python -m guitar_notes --frets inlay --max-fret 7
 
 ## Fretboard display
 
-The quiz renders an ASCII fretboard for each question. The highlighted position shows the fret number; the string label on the left identifies which string is being played. Open strings are shown with `0`.
+The quiz renders an ASCII fretboard for each question. The highlighted position shows the fret number. String names are hidden by default so you can't use them as a shortcut — use `--show-labels` to reveal them.
 
 ```
-e|- - - - - - - - - - - - - - - - - - - |
-B|- - - - - - - - - - - - - - - - - - - |
-G|- - - - - - - - - - - - - - - - - - - |
-D|- - - - - - - - - - - - - - - - - - - |
-A|- - - - 5 - - - - - - - - - - - - - - |
-E|- - - - - - - - - - - - - - - - - - - |
+ |- - - - - - - - - - - - - - - - - - - |
+ |- - - - - - - - - - - - - - - - - - - |
+ |- - - - - - - - - - - - - - - - - - - |
+ |- - - - - - - - - - - - - - - - - - - |
+ |- - - - 5 - - - - - - - - - - - - - - |
+ |- - - - - - - - - - - - - - - - - - - |
  |    .   .   .   .     :     .     .   |
 ```
 
-The dots below the low-E row are fretboard inlays (at frets 1, 5, 7, 9, 15, 17) and the double-dot (`:`) marks fret 12.
+Open strings are shown with `0` on the active string. The dots below the bottom row are fretboard inlays (at frets 1, 5, 7, 9, 15, 17) and the double-dot (`:`) marks fret 12.
 
 ## String numbering
 

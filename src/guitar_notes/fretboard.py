@@ -74,8 +74,15 @@ def _inlay_cell(fret: int) -> str:
     return marker + " " * (CELL - 1)
 
 
-def render_fretboard(highlight_string: int, highlight_fret: int) -> str:
-    """Return the ASCII fretboard as a string with the given position highlighted."""
+def render_fretboard(highlight_string: int, highlight_fret: int, show_labels: bool = False) -> str:
+    """Return the ASCII fretboard as a string with the given position highlighted.
+
+    Args:
+        highlight_string: String number (1–6) to highlight.
+        highlight_fret: Fret number (0–17) to highlight.
+        show_labels: If True, show string names (e, B, G, D, A, E) to the left of
+            the nut. Defaults to False so players can't use the labels as a shortcut.
+    """
     terminal_width = shutil.get_terminal_size(fallback=(80, 24)).columns
     board_width = 2 + 1 + len(DISPLAY_FRETS) * CELL + 1  # label + | + frets + |
     if terminal_width < board_width:
@@ -94,8 +101,10 @@ def render_fretboard(highlight_string: int, highlight_fret: int) -> str:
             label = "0"
         elif open_fret:
             label = " "
-        else:
+        elif show_labels:
             label = STRING_LABELS[s]
+        else:
+            label = " "
 
         # Fret cells (frets 1–17)
         fret_str = "".join(

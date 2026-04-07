@@ -23,6 +23,7 @@ class Settings:
     note_set: NoteSet = "all"
     open_strings: bool = False
     max_fret: int = MAX_FRET
+    show_labels: bool = False
 
     def active_frets(self) -> list[int]:
         if self.open_strings:

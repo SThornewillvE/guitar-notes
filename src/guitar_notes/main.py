@@ -47,6 +47,12 @@ def parse_args(argv: list[str] | None = None) -> Settings:
         metavar="N",
         help=f"Maximum fret to include (0–{MAX_FRET}, inclusive). Default: {MAX_FRET}.",
     )
+    parser.add_argument(
+        "--show-labels",
+        action="store_true",
+        default=False,
+        help="Show string names (e, B, G, D, A, E) to the left of the nut. Hidden by default to avoid using them as a reference.",
+    )
 
     args = parser.parse_args(argv)
 
@@ -70,6 +76,7 @@ def parse_args(argv: list[str] | None = None) -> Settings:
         note_set=args.notes,
         open_strings=args.open_strings,
         max_fret=args.max_fret,
+        show_labels=args.show_labels,
     )
 
 

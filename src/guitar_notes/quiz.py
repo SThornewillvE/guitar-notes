@@ -42,7 +42,7 @@ def run_quiz(settings: Settings) -> None:
     try:
         while True:
             string, fret = pick_position(settings, last_fret)
-            board = render_fretboard(string, fret)
+            board = render_fretboard(string, fret, show_labels=settings.show_labels)
             print(board)
             print()
 
