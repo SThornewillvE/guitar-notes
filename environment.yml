@@ -1,5 +1,0 @@
-name: guitar-notes
-channels:
-  - defaults
-dependencies:
-  - python=3.11

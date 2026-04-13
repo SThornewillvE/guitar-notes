@@ -32,7 +32,7 @@ DISPLAY_FRETS = list(range(1, 18))  # 17 fret positions
 
 # Each fret cell is CELL chars wide: hyphen + space, giving visual separation between frets.
 CELL = 2
-INLAY_POSITIONS = {1, 5, 7, 9, 12, 15, 17}
+INLAY_POSITIONS = {3, 5, 7, 9, 12, 15, 17}
 MIN_TERMINAL_WIDTH = 30
 
 

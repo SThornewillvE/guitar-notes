@@ -6,7 +6,7 @@ from typing import Literal
 # All frets available (0 = open string, up to fret 17)
 MAX_FRET = 17
 ALL_FRETS = list(range(MAX_FRET + 1))
-INLAY_FRETS = [0, 5, 7, 9, 12, 15, 17]
+INLAY_FRETS = [3, 5, 7, 9, 12, 15, 17]
 NON_INLAY_FRETS = [f for f in ALL_FRETS if f not in INLAY_FRETS]
 
 # Strings numbered 1–6 high-e to low-E (guitarist convention)

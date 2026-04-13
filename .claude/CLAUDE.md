@@ -10,11 +10,11 @@ terminal. The app presents a highlighted position (string + fret) and the user t
 - Python 3.11+
 - No web framework is required, this is to be done within the terminal (stdlib `curses` or `rich` for rendering)
 - No database is necessary, it's okay for no statistics to be saved over time
-- `environment.yml` to manage a python virtual environment using conda
+- `pyproject.toml` + `uv` to manage the Python environment
 - This app will not be deployed, and therefore code testing using `pytest` is *not necessary*
 
 ## Commands
-- Run app: `python -m guitar_notes`
+- Run app: `uv run python -m guitar_notes` (from project root or `src/`)
 
 ## Architecture
 
@@ -27,7 +27,8 @@ guitar-notes/
 │       ├── fretboard.py     # Note logic (string/fret → note name) + ASCII rendering
 │       ├── quiz.py          # Quiz loop, input handling, scoring, session state
 │       └── settings.py      # Settings model (active strings, fret ranges, note sets)
-├── environment.yml
+├── pyproject.toml
+├── .python-version
 └── README.md
 ```
 
@@ -140,5 +141,5 @@ Settings should be configurable at startup (interactive menu or CLI flags).
 - Do not fill in the `README.md` file until you have completed the app
 - Do not run commands outside the directory that the `guitar-notes` repo is in 
 - Do not run any git commands, let the user manage this for themselves
-- Do not install any packages using poetry, no `pyproject.toml` should be required to allow the use of this app
-    - This means that the user just needs to be in the `/src/` directory and run `python -m guitar_notes` with the relevant flags when needed.
+- Do not add external dependencies to `pyproject.toml` without asking first — the python stdlib is preferred
+    - The user runs `uv run python -m guitar_notes` from the project root (or `src/`) with the relevant flags when needed.
