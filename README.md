@@ -46,8 +46,9 @@ Type the note name when prompted (e.g. `A`, `C#`, `Bb`). Flat equivalents are ac
 | `--strings` | `1`–`6` (space-separated) | all | Strings to include. 1 = high-e, 6 = low-E. |
 | `--frets` | `all`, `inlay`, `non_inlay` | `all` | Restrict to inlay frets (1,5,7,9,12,15,17), non-inlay, or all. |
 | `--notes` | `all`, `naturals_only` | `all` | Restrict to natural notes only (no sharps/flats). |
-| `--open-strings` | flag | off | Test open strings only (fret 0). Cannot be combined with `--frets`, `--notes`, or `--max-fret`. |
-| `--max-fret` | `0`–`17` | `17` | Highest fret to include (inclusive). Useful for beginners drilling the first few frets. Cannot be combined with `--open-strings`. |
+| `--open-strings` | flag | off | Test open strings only (fret 0). Cannot be combined with `--frets`, `--notes`, `--min-fret`, or `--max-fret`. |
+| `--min-fret` | `0`–`17` | `0` | Lowest fret to include (inclusive). Cannot be combined with `--open-strings`. |
+| `--max-fret` | `0`–`17` | `17` | Highest fret to include (inclusive). Cannot be combined with `--open-strings`. |
 | `--show-labels` | flag | off | Show string names (e, B, G, D, A, E) to the left of the nut. Hidden by default so you can't use them as a reference. |
 
 #### Examples
@@ -73,6 +74,9 @@ python -m guitar_notes --max-fret 4
 
 # Inlay frets up to the 7th fret
 python -m guitar_notes --frets inlay --max-fret 7
+
+# Drill only the upper part of the neck (frets 7–12)
+python -m guitar_notes --min-fret 7 --max-fret 12
 ```
 
 ## Fretboard display
