@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from typing import Literal
 
 # All frets available (0 = open string, up to fret 17)
+MIN_FRET = 0
 MAX_FRET = 17
 ALL_FRETS = list(range(MAX_FRET + 1))
 INLAY_FRETS = [3, 5, 7, 9, 12, 15, 17]
@@ -22,6 +23,7 @@ class Settings:
     fret_filter: FretFilter = "all"
     note_set: NoteSet = "all"
     open_strings: bool = False
+    min_fret: int = 0
     max_fret: int = MAX_FRET
     show_labels: bool = False
 
@@ -34,4 +36,4 @@ class Settings:
             frets = NON_INLAY_FRETS
         else:
             frets = ALL_FRETS
-        return [f for f in frets if f <= self.max_fret]
+        return [f for f in frets if self.min_fret <= f <= self.max_fret]
